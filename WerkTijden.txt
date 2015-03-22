@@ -7,7 +7,10 @@
     Thom
 
     Ik ben vandaag begonnen om een low poly test map te maken om te kijken of deze stijl mooi zou zijn.
-[22-03-2015: 2 uur]
+[22-03-2015: 4 uur]
     Thom
 
-    Ik heb nu een betere test scene gemaakt waarin je kan rondlopen, met zon en schaduws.
+    Ik heb nu een betere test scene gemaakt waarin je kan rondlopen, met zon en schaduws. Ook heb ik gras en een bessenstruik gemaakt.
+    Alles is gedaan met kennis die ik al had, ik heb dus 0 bronnen nodig gehad :)
+    Wel heb ik (https://www.google.nl/search?q=low+poly+art&biw=1366&bih=673&source=lnms&tbm=isch&sa=X&ei=5fEOVca3Gsz3aqz8gLAH&ved=0CAYQ_AUoAQ) gebruikt als inspiratie.
+    Alles staat op (https://github.com/goudgeld1/ProfielWerkstuk)
