@@ -7,3 +7,7 @@
     Thom
 
     Ik ben vandaag begonnen om een low poly test map te maken om te kijken of deze stijl mooi zou zijn.
+[22-03-2015: 2 uur]
+    Thom
+
+    Ik heb nu een betere test scene gemaakt waarin je kan rondlopen, met zon en schaduws.
