@@ -18,3 +18,9 @@
     Alles staat op (https://github.com/goudgeld1/ProfielWerkstuk)
     Ik heb net snel een zwaard gemodeleerd, hij is echt slecht :p, en in de steen gestopt. Ik vind deze stijl echt geweldig!
     Ik heb net ook een hele slechte kist met animatie gemaakt (Echt veel te slecht :p)
+
+[30-03-2015: ...]
+	Thom
+
+	Ik kwam toevallig deze website tegen (http://3dmedieval.blogspot.nl/2011/05/increasing-frame-rate-in-blender-game.html)
+	toen ik voor mezelf aan een spel bezig was. Ik denk dat ie wel handig is.
