@@ -77,9 +77,3 @@ elif dKeyDown:
 if spaceKeyDown and curCont.sensors["GroundCollision"].positive:
     curCont.activate("Jump")
 curCont.deactivate("Jump")
-
-# Correct gravity for the player
-if curCont.sensors["GroundCollision"].positive:
-    player.applyForce([0, 0, curScene.gravity[2] * player.mass], False)
-else:
-    player.applyForce([0, 0, curScene.gravity[2] * player.mass], False)
