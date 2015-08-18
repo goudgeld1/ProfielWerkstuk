@@ -5,16 +5,14 @@ curScene = bge.logic.getCurrentScene()
 curCont = bge.logic.getCurrentController()
 scenes = bge.logic.getSceneList()
 
-forwardSpeed = 0.06     #0.08
-backwardSpeed = 0.04    #0.06
-leftSpeed = 0.02        #0.04
-rightSpeed = 0.02       #0.04
-
-
-
-# Get the Objects
+# Get the objects
 fpView = curScene.objects["FpView"]
 player = curScene.objects["Player"]
+
+forwardSpeed = player["ForwardSpeed"]    #0.08 m/tick = 0.08*60 = 4.8 m/s
+backwardSpeed = player["BackwardSpeed"]  #0.06 m/tick ...
+leftSpeed = player["LeftSpeed"]          #0.04 m/tick ...
+rightSpeed = player["RightSpeed"]        #0.04 m/tick ...
 
 # Get keyboard input
 aKeyDown = bge.logic.keyboard.events[bge.events.AKEY] == bge.logic.KX_INPUT_ACTIVE
@@ -43,6 +41,9 @@ shiftKeyDown = bge.logic.keyboard.events[bge.events.LEFTSHIFTKEY] == bge.logic.K
 
 spaceKeyDown = bge.logic.keyboard.events[bge.events.SPACEKEY] == bge.logic.KX_INPUT_ACTIVE
 spaceKeyJustDown = bge.logic.keyboard.events[bge.events.SPACEKEY] == bge.logic.KX_INPUT_JUST_ACTIVATED
+
+accentGraveKeyJustDown = bge.logic.keyboard.events[bge.events.ACCENTGRAVEKEY] == bge.logic.KX_INPUT_JUST_ACTIVATED
+
 
 # Get mouse input
 lMouseDown = bge.logic.mouse.events[bge.events.LEFTMOUSE] == bge.logic.KX_INPUT_ACTIVE
@@ -77,3 +78,15 @@ elif dKeyDown:
 if spaceKeyDown and curCont.sensors["GroundCollision"].positive:
     curCont.activate("Jump")
 curCont.deactivate("Jump")
+
+# Correct gravity for the player
+if curCont.sensors["GroundCollision"].positive:
+    player.applyForce([0, 0, 9.8 * player.mass], True)
+else:
+    player.applyForce([0, 0, -9.8 * player.mass], True)
+
+#Toggle the console
+if not player["Console"] and accentGraveKeyJustDown:
+    player["Console"] = True
+elif player["Console"] and accentGraveKeyJustDown:
+    player["Console"] = False

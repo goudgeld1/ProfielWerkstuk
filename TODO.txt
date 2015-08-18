@@ -1,2 +1,3 @@
-Finish the wooden cabin in the Src/Objects.
-Sculpt the terain.
+make the mist and colors work
+make a console
+Optimize tree collisions
