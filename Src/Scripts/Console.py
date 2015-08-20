@@ -97,29 +97,59 @@ checkKey(bge.events.ZKEY, "Z", True)
 checkKey(bge.events.SPACEKEY, " ", False)
 checkKey(bge.events.PERIODKEY, ".", False)
 
-
 if bge.logic.keyboard.events[bge.events.BACKSPACEKEY] == bge.logic.KX_INPUT_JUST_ACTIVATED:
-    if len(consoleInput['Text']) > 3:
-        consoleInput['Text'] = consoleInput['Text'][:-1]
+    if len(consoleInput["Text"]) > 3:
+        consoleInput["Text"] = consoleInput["Text"][:-1]
 elif bge.logic.keyboard.events[bge.events.ENTERKEY] == bge.logic.KX_INPUT_JUST_ACTIVATED:
     
-    if re.search('(SetForwardSpeed)', consoleInput['Text'], re.I):
-        match = re.search('(SetForwardSpeed)', consoleInput['Text'], re.I)
-        if re.search('SetForwardSpeed ([-+]?[0-9]*\.?[0-9]*)', consoleInput['Text']):
-            print(re.search('SetForwardSpeed ([-+]?[0-9]*\.?[0-9]*)', consoleInput['Text']).group(1))
-            bge.logic.globalDict["ForwardSpeed"] = float(re.search('SetForwardSpeed ([-+]?[0-9]*\.?[0-9]*)', consoleInput['Text']).group(1))
-            consoleOutput['Text'] = "<< ForwardSpeed set to %s" % str(bge.logic.globalDict["ForwardSpeed"])
+    
+    if re.search("SetForwardSpeed|SFS", consoleInput["Text"], re.I):
+        if re.search("SetForwardSpeed ([-+]?[0-9]*\.?[0-9]*)", consoleInput["Text"], re.I):
+            arg1 = re.search("SetForwardSpeed ([-+]?[0-9]*\.?[0-9]*)", consoleInput["Text"], re.I).group(1)
+            ((bge.logic.getSceneList())[0].objects["Player"])["ForwardSpeed"] = float(arg1)
+            consoleOutput["Text"] = "<< ForwardSpeed set to %s meter/tick" % arg1
+        elif re.search("SFS ([-+]?[0-9]*\.?[0-9]*)", consoleInput["Text"], re.I):
+            arg1 = re.search("SFS ([-+]?[0-9]*\.?[0-9]*)", consoleInput["Text"], re.I).group(1)
+            ((bge.logic.getSceneList())[0].objects["Player"])["ForwardSpeed"] = float(arg1)
+            consoleOutput["Text"] = "<< ForwardSpeed set to %s meter/tick" % arg1
         else:
             consoleOutput['Text'] = "<< Number expected"
     
-    elif re.search('(SetBackwardSpeed) (\d)', consoleInput['Text'], re.I):
-        consoleOutput['Text'] = "<< BackwardSpeed set to %s" % re.search(r'(SetBackwardSpeed) (\d)', consoleInput['Text'], re.I).group(2)
+    elif re.search("SetBackwardSpeed|SBS", consoleInput["Text"], re.I):
+        if re.search("SetBackwardSpeed ([-+]?[0-9]*\.?[0-9]*)", consoleInput["Text"], re.I):
+            arg1 = re.search("SetBackwardSpeed ([-+]?[0-9]*\.?[0-9]*)", consoleInput["Text"], re.I).group(1)
+            ((bge.logic.getSceneList())[0].objects["Player"])["BackwardSpeed"] = float(arg1)
+            consoleOutput["Text"] = "<< BackwardSpeed set to %s meter/tick" % arg1
+        elif re.search("SBS ([-+]?[0-9]*\.?[0-9]*)", consoleInput["Text"], re.I):
+            arg1 = re.search("SBS ([-+]?[0-9]*\.?[0-9]*)", consoleInput["Text"], re.I).group(1)
+            ((bge.logic.getSceneList())[0].objects["Player"])["BackwardSpeed"] = float(arg1)
+            consoleOutput["Text"] = "<< BackwardSpeed set to %s meter/tick" % arg1
+        else:
+            consoleOutput['Text'] = "<< Number expected"
     
-    elif re.search('(SetLeftSpeed) (\d)', consoleInput['Text'], re.I):
-        consoleOutput['Text'] = "<< LeftSpeed set to %s" % re.search(r'(SetLeftSpeed) (\d)', consoleInput['Text'], re.I).group(2)
+    elif re.search("SetLeftSpeed|SLS", consoleInput["Text"], re.I):
+        if re.search("SetLeftSpeed ([-+]?[0-9]*\.?[0-9]*)", consoleInput["Text"], re.I):
+            arg1 = re.search("SetLeftSpeed ([-+]?[0-9]*\.?[0-9]*)", consoleInput["Text"], re.I).group(1)
+            ((bge.logic.getSceneList())[0].objects["Player"])["LeftSpeed"] = float(arg1)
+            consoleOutput["Text"] = "<< LeftSpeed set to %s meter/tick" % arg1
+        elif re.search("SLS ([-+]?[0-9]*\.?[0-9]*)", consoleInput["Text"], re.I):
+            arg1 = re.search("SLS ([-+]?[0-9]*\.?[0-9]*)", consoleInput["Text"], re.I).group(1)
+            ((bge.logic.getSceneList())[0].objects["Player"])["LeftSpeed"] = float(arg1)
+            consoleOutput["Text"] = "<< LeftSpeed set to %s meter/tick" % arg1
+        else:
+            consoleOutput['Text'] = "<< Number expected"
     
-    elif re.search('(SetRightSpeed) (\d)', consoleInput['Text'], re.I):
-        consoleOutput['Text'] = "<< RightSpeed set to %s" % re.search(r'(SetRightSpeed) (\d)', consoleInput['Text'], re.I).group(2)
+    elif re.search("SetRightSpeed|SRS", consoleInput["Text"], re.I):
+        if re.search("SetRightSpeed ([-+]?[0-9]*\.?[0-9]*)", consoleInput["Text"], re.I):
+            arg1 = re.search("SetRightSpeed ([-+]?[0-9]*\.?[0-9]*)", consoleInput["Text"], re.I).group(1)
+            ((bge.logic.getSceneList())[0].objects["Player"])["RightSpeed"] = float(arg1)
+            consoleOutput["Text"] = "<< RightSpeed set to %s meter/tick" % arg1
+        elif re.search("SRS ([-+]?[0-9]*\.?[0-9]*)", consoleInput["Text"], re.I):
+            arg1 = re.search("SRS ([-+]?[0-9]*\.?[0-9]*)", consoleInput["Text"], re.I).group(1)
+            ((bge.logic.getSceneList())[0].objects["Player"])["RightSpeed"] = float(arg1)
+            consoleOutput["Text"] = "<< RightSpeed set to %s meter/tick" % arg1
+        else:
+            consoleOutput['Text'] = "<< Number expected"
     
     else:
         consoleOutput['Text'] = "<< Unknown Comand"
