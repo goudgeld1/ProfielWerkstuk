@@ -1,0 +1,4 @@
+Continue
+New Game
+Options
+Quit
