@@ -1,4 +1,4 @@
-import bge, math, random
+import bge, math, random, Rasterizer
 
 # Frequently used variables
 curScene = bge.logic.getCurrentScene()
@@ -13,15 +13,12 @@ OPE = curScene.objectsInactive["ObjectPlacementEmpty"]
 
 random.seed(256)
 
-# Remove the mouse pointer if needed
-Rasterizer.showMouse(False)
 
 # Add mist to the world
-#curScene.world.mistEnable = True
+curScene.world.mistEnable = True
 
-# Add the HeadsUpDisplay (HUD) to the view
-if player["HUD"]:
-    curCont.activate("HUD")
+# Set the camera to the fpView
+curScene.active_camera = fpView
 
 # Add trees
 def addTree():
@@ -39,9 +36,9 @@ def addTree():
             if hit.name == "Ground":
                 OPE.position = point
                 OPE.orientation = (0, 0, random.randint(0, 360))
-                curScene.addObject("Tree1", OPE, 0)
+                curScene.addObject("ObjTree1", OPE, 0)
     else:
         addTree()
     
-for x in range(4096):
+for x in range(2048):
     addTree()

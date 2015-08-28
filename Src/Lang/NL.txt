@@ -1,4 +1,10 @@
-Verder gaan
-Nieuw Spel
-Opties
-Stoppen
+{
+
+  "continue": "Verder gaan",
+
+  "newGame": "Nieuw Spel",
+
+  "options": "Opties",
+  "quit": "Stoppen",
+  "testItem": "Test Item"
+}

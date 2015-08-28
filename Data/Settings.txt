@@ -1,0 +1,8 @@
+{
+  "Language": "NL",
+  "ForwardSpeed": 4,
+  "BackwardSpeed": 3,
+  "LeftSpeed": 2,
+  "RightSpeed": 2,
+  "JumpForce": 4
+}

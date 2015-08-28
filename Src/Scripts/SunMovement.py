@@ -9,6 +9,7 @@ scenes = bge.logic.getSceneList()
 sunPath = curScene.objects["SunPath"]
 sun = curScene.objects["Sun"]
 ambient = curScene.objects["Ambient"]
+player = curScene.objects["Player"]
 
 xyz = sunPath.localOrientation.to_euler()
 xyz[1] = math.radians(math.degrees(xyz[1])-1/60)
@@ -33,8 +34,9 @@ else:
     ambient.color = [.6, .15, .05]
     curScene.world.backgroundColor = [.6, .3, .2]
     curScene.world.mistColor = [.6, .3, .2]
-    
-    
+
+player["Hunger"] -= 0.005
+
 #ambient.energy = math.sin((xyz[1]/2 + math.pi/4) + 1) / 10 + 0.1
 #print(math.degrees(xyz[1]))
 #print(ambient.energy)
