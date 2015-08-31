@@ -1,0 +1,23 @@
+{
+	"Language" : "NL",
+	"LastPlayedGame" : "Save1",
+	"ForwardSpeed" : 4,
+	"BackwardSpeed" : 3,
+	"LeftSpeed" : 2,
+	"RightSpeed" : 2,
+	"JumpForce" : 4,
+	"DefaultSave" : {
+		"Player" : {
+			"Location" : {
+				"X" : 0,
+				"Y" : 0,
+				"Z" : 8
+			},
+			"Rotation" : {
+				"X" : 0,
+				"Y" : 0,
+				"Z" : 0
+			}
+		}
+	}
+}
