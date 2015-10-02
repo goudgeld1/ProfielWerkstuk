@@ -4,7 +4,7 @@ import bge, Rasterizer
 curScene = bge.logic.getCurrentScene()
 curCont = bge.logic.getCurrentController()
 scenes = bge.logic.getSceneList()
-text = bge.logic.globalDict["text"]
+text = bge.logic.globalDict["Text"]
 
 # Get the objects
 inventoryView = curScene.objects["InventoryView"]

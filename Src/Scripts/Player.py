@@ -46,12 +46,14 @@ wKeyDown = bge.logic.keyboard.events[bge.events.WKEY] == bge.logic.KX_INPUT_ACTI
 wKeyJustDown = bge.logic.keyboard.events[bge.events.WKEY] == bge.logic.KX_INPUT_JUST_ACTIVATED
 wKeyJustUp = bge.logic.keyboard.events[bge.events.WKEY] == bge.logic.KX_INPUT_JUST_RELEASED
 
+accentGraveKeyJustDown = bge.logic.keyboard.events[bge.events.ACCENTGRAVEKEY] == bge.logic.KX_INPUT_JUST_ACTIVATED
+
+escKeyJustDown = bge.logic.keyboard.events[bge.events.ESCKEY] == bge.logic.KX_INPUT_JUST_ACTIVATED
+
 shiftKeyDown = bge.logic.keyboard.events[bge.events.LEFTSHIFTKEY] == bge.logic.KX_INPUT_ACTIVE
 
 spaceKeyDown = bge.logic.keyboard.events[bge.events.SPACEKEY] == bge.logic.KX_INPUT_ACTIVE
 spaceKeyJustDown = bge.logic.keyboard.events[bge.events.SPACEKEY] == bge.logic.KX_INPUT_JUST_ACTIVATED
-
-accentGraveKeyJustDown = bge.logic.keyboard.events[bge.events.ACCENTGRAVEKEY] == bge.logic.KX_INPUT_JUST_ACTIVATED
 
 
 # Get mouse input
@@ -129,11 +131,21 @@ if spaceKeyDown and curCont.sensors["GroundCollision"].positive:
 # Deactivate current movement
 curCont.deactivate("Move")
 
-#Toggle the console
+# Open the console
 if accentGraveKeyJustDown:
     curCont.activate("Console")
 
-#Toggle the inventory
+# Open the inventory
 if eKeyJustDown:
-    curCont.activate("Blur")
     curCont.activate("Inventory")
+
+# Open the ESC menu ( for testing it is now the "q" key )
+if qKeyJustDown:
+    print("q")
+
+# Add a bit of Hunger/Thirst every frame bge.logic.globalDict["GameData"]
+if bge.logic.globalDict["GameData"]["Player"]["Hunger"] <= 100.0:
+    bge.logic.globalDict["GameData"]["Player"]["Hunger"] += 0.002
+
+if bge.logic.globalDict["GameData"]["Player"]["Thirst"] <= 100.0:
+    bge.logic.globalDict["GameData"]["Player"]["Thirst"] += 0.008

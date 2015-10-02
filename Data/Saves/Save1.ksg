@@ -2,13 +2,18 @@
 	"Player" : {
 		"Location" : {
 			"X" : 0,
-			"Y" : 0,
+			"Y" : 8,
 			"Z" : 8
 		},
 		"Rotation" : {
 			"X" : 0,
 			"Y" : 0,
-			"Z" : 0
-		}
+			"Z" : 90
+		},
+			"Health": 100,
+			"Endurance": 100,
+			"Hunger": 0,
+			"Thirst": 0,
+			"Karma": 0
 	}
 }

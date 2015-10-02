@@ -1,4 +1,4 @@
-import bge, Rasterizer
+import bge, Rasterizer, json
 
 # Frequently used variables
 curScene = bge.logic.getCurrentScene()
@@ -15,15 +15,21 @@ newGameSensor = curScene.objects["NewGameSensor"]
 optionsSensor = curScene.objects["OptionsSensor"]
 quitSensor = curScene.objects["QuitSensor"]
 
-if continueSensor["Selected"] == False and continueSensor.sensors["MouseOver"].positive:
-    continueSensor["Selected"] = True
-    continueObj["Text"] = "> "+continueObj["Text"]
-elif continueSensor["Selected"] == True and (not continueSensor.sensors["MouseOver"].positive):
-    continueSensor["Selected"] = False    
-    continueObj["Text"] = continueObj["Text"][2:]
-elif continueSensor.sensors["MouseOver"].positive and startMenuView.sensors["LeftMouseDown"].positive:
-    curScene.replace("HUD")
-    curCont.activate("StartMainGame")
+if continueSensor["Active"]:
+    if continueSensor["Selected"] == False and continueSensor.sensors["MouseOver"].positive:
+        continueSensor["Selected"] = True
+        continueObj["Text"] = "> "+continueObj["Text"]
+    elif continueSensor["Selected"] == True and (not continueSensor.sensors["MouseOver"].positive):
+        continueSensor["Selected"] = False    
+        continueObj["Text"] = continueObj["Text"][2:]
+    elif continueSensor.sensors["MouseOver"].positive and startMenuView.sensors["LeftMouseDown"].positive:
+        file = open("Data\\Saves\\"+bge.logic.globalDict["Settings"]["LastPlayedGame"]+".ksg", "r")
+        data = file.read().replace('\n', '')
+        content = json.loads(data)
+        bge.logic.globalDict["GameData"] = content
+        
+        curScene.replace("HUD")
+        curCont.activate("StartMainGame")
 
 
 if newGameSensor["Selected"] == False and newGameSensor.sensors["MouseOver"].positive:
@@ -32,6 +38,11 @@ if newGameSensor["Selected"] == False and newGameSensor.sensors["MouseOver"].pos
 elif newGameSensor["Selected"] == True and (not newGameSensor.sensors["MouseOver"].positive):
     newGameSensor["Selected"] = False    
     newGame["Text"] = newGame["Text"][2:]
+elif newGameSensor.sensors["MouseOver"].positive and startMenuView.sensors["LeftMouseDown"].positive:
+        bge.logic.globalDict["GameData"] = bge.logic.globalDict["Settings"]["DefaultSave"]
+        
+        curScene.replace("HUD")
+        curCont.activate("StartMainGame")
 
 
 if optionsSensor["Selected"] == False and optionsSensor.sensors["MouseOver"].positive:

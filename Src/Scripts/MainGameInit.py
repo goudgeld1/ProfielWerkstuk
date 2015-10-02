@@ -5,6 +5,8 @@ curScene = bge.logic.getCurrentScene()
 curCont = bge.logic.getCurrentController()
 scenes = bge.logic.getSceneList()
 
+gameData = bge.logic.globalDict["GameData"]
+
 # Get the objects
 fpView = curScene.objects["FpView"]
 player = curScene.objects["Player"]
@@ -19,6 +21,19 @@ curScene.world.mistEnable = True
 
 # Set the camera to the fpView
 curScene.active_camera = fpView
+
+# Set variables from the save file
+player.position[0] = gameData["Player"]["Location"]["X"]
+player.position[1] = gameData["Player"]["Location"]["Y"]
+player.position[2] = gameData["Player"]["Location"]["Z"]
+
+player.applyRotation((gameData["Player"]["Rotation"]["X"], gameData["Player"]["Rotation"]["Y"], gameData["Player"]["Rotation"]["Z"]), False)
+
+#rotation = player.orientation.to_euler()
+#rotation[0] = gameData["Player"]["Rotation"]["X"]
+#rotation[1] = gameData["Player"]["Rotation"]["Y"]
+#rotation[2] = gameData["Player"]["Rotation"]["Z"]
+#player.orientation = rotation.to_matrix()
 
 # Add trees
 def addTree():
@@ -40,5 +55,5 @@ def addTree():
     else:
         addTree()
     
-for x in range(2048):
+for x in range(1024):
     addTree()

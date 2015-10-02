@@ -35,8 +35,6 @@ else:
     curScene.world.backgroundColor = [.6, .3, .2]
     curScene.world.mistColor = [.6, .3, .2]
 
-player["Hunger"] -= 0.005
-
 #ambient.energy = math.sin((xyz[1]/2 + math.pi/4) + 1) / 10 + 0.1
 #print(math.degrees(xyz[1]))
 #print(ambient.energy)

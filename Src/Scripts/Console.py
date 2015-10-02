@@ -104,6 +104,7 @@ elif bge.logic.keyboard.events[bge.events.ENTERKEY] == bge.logic.KX_INPUT_JUST_A
     
     settings = bge.logic.globalDict["Settings"]
     
+    # SetForwardSpeed
     if re.search("SetForwardSpeed|SFS", consoleInput["Text"], re.I):
         if re.search("SetForwardSpeed ([-+]?[0-9]*\.?[0-9]*)", consoleInput["Text"], re.I):
             arg1 = re.search("SetForwardSpeed ([-+]?[0-9]*\.?[0-9]*)", consoleInput["Text"], re.I).group(1)
@@ -116,6 +117,7 @@ elif bge.logic.keyboard.events[bge.events.ENTERKEY] == bge.logic.KX_INPUT_JUST_A
         else:
             consoleOutput['Text'] = "<< Number expected"
     
+    # SetBackwardSpeed
     elif re.search("SetBackwardSpeed|SBS", consoleInput["Text"], re.I):
         if re.search("SetBackwardSpeed ([-+]?[0-9]*\.?[0-9]*)", consoleInput["Text"], re.I):
             arg1 = re.search("SetBackwardSpeed ([-+]?[0-9]*\.?[0-9]*)", consoleInput["Text"], re.I).group(1)
@@ -128,6 +130,7 @@ elif bge.logic.keyboard.events[bge.events.ENTERKEY] == bge.logic.KX_INPUT_JUST_A
         else:
             consoleOutput['Text'] = "<< Number expected"
     
+    # SetLeftSpeed
     elif re.search("SetLeftSpeed|SLS", consoleInput["Text"], re.I):
         if re.search("SetLeftSpeed ([-+]?[0-9]*\.?[0-9]*)", consoleInput["Text"], re.I):
             arg1 = re.search("SetLeftSpeed ([-+]?[0-9]*\.?[0-9]*)", consoleInput["Text"], re.I).group(1)
@@ -140,6 +143,7 @@ elif bge.logic.keyboard.events[bge.events.ENTERKEY] == bge.logic.KX_INPUT_JUST_A
         else:
             consoleOutput['Text'] = "<< Number expected"
     
+    # SetRightSpeed
     elif re.search("SetRightSpeed|SRS", consoleInput["Text"], re.I):
         if re.search("SetRightSpeed ([-+]?[0-9]*\.?[0-9]*)", consoleInput["Text"], re.I):
             arg1 = re.search("SetRightSpeed ([-+]?[0-9]*\.?[0-9]*)", consoleInput["Text"], re.I).group(1)
@@ -152,6 +156,7 @@ elif bge.logic.keyboard.events[bge.events.ENTERKEY] == bge.logic.KX_INPUT_JUST_A
         else:
             consoleOutput['Text'] = "<< Number expected"
     
+    # SetJumpForce
     elif re.search("SetJumpForce|SJF", consoleInput["Text"], re.I):
         if re.search("SetJumpForce ([-+]?[0-9]*\.?[0-9]*)", consoleInput["Text"], re.I):
             arg1 = re.search("SetJumpForce ([-+]?[0-9]*\.?[0-9]*)", consoleInput["Text"], re.I).group(1)
@@ -163,6 +168,15 @@ elif bge.logic.keyboard.events[bge.events.ENTERKEY] == bge.logic.KX_INPUT_JUST_A
             consoleOutput["Text"] = "<< JumpForce set to %s" % arg1
         else:
             consoleOutput['Text'] = "<< Number expected"
+    
+    # Print a global variable
+    elif re.search("Print", consoleInput["Text"], re.I):
+        if re.search("Print (\w+)", consoleInput["Text"], re.I):
+            arg1 = re.search("Print (\w+)", consoleInput["Text"], re.I).group(1)
+            if bge.logic.globalDict[arg1]:
+                consoleOutput["Text"] = "<< %s" % bge.logic.globalDict[arg1]
+        else:
+            consoleOutput['Text'] = "<< Not a valid global variable name (Case Sensitive Names!)"
     
     else:
         consoleOutput['Text'] = "<< Unknown Comand"
