@@ -16,13 +16,13 @@ xyz[1] = math.radians(math.degrees(xyz[1])-1/60)
 sunPath.localOrientation = xyz.to_matrix()
 
 # make the sky color change
-if(math.degrees(xyz[1]) < 80 and math.degrees(xyz[1]) > -80):
+if(math.degrees(xyz[1]) < 75 and math.degrees(xyz[1]) > -75):
     ambient.energy = 0.4
     sun.energy = 1.0
     ambient.color = [1, 1, 1]
     curScene.world.backgroundColor = [0, .4, .65]
     curScene.world.mistColor = [0, .4, .65]
-elif(math.degrees(xyz[1]) > 100 or math.degrees(xyz[1]) < -100):
+elif(math.degrees(xyz[1]) > 90 or math.degrees(xyz[1]) < -90):
     ambient.energy = 0.2
     sun.energy = 0.0
     ambient.color = [.4, .4, .8]
